@@ -1,5 +1,6 @@
 import './day1.css';
 
+// Day1 : CSS
 export default function Day1() {
   return (
     <div className="contaniner">
