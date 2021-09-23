@@ -1,0 +1,27 @@
+.contaniner {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.box {
+}
+
+.box_button {
+}
+
+.step2 {
+}
+
+.step3 {
+}
+
+.step4 {
+}
+
+@media only screen and (min-width: 320px) {  
+  body { 
+    background: green;
+    font-size: 15px;
+  }
+}
