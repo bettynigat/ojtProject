@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Day1 from './days/day1/Day1';
+import Day2 from './days/day2/Day2';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Day1 />
+    <Day2 />
   </React.StrictMode>,
   document.getElementById('root')
 );

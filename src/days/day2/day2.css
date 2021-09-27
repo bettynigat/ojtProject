@@ -1,0 +1,52 @@
+.contaniner {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.box {
+  background-color: #66cda9;
+  margin: 10px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.box_button {
+  background-color: #f4a460;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 25px;
+  font-weight: bold;
+  align-items: center;
+}
+
+@media only screen and (min-width: 320px) {  
+  body { 
+    background: green;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (min-width: 768px) {  
+  body { 
+    background: yellow;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {  
+  body { 
+    background: gray;
+    font-size: 15px;
+  }
+}
