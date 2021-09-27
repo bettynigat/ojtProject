@@ -2,26 +2,65 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  
 }
+
 
 .box {
+  background-color: lightgreen;
+  margin: 10px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+
 }
 
-.box_button {
+.button{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
 }
+.box_button {
+ 
+  background-color: orange;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 25px;
+  font-weight: bold;
+  align-items: center;
+  
+}
+
 
 .step2 {
+
 }
 
 .step3 {
+  
 }
 
 .step4 {
+  
 }
 
 @media only screen and (min-width: 320px) {  
   body { 
     background: green;
+    font-size: 15px;
+  }
+}
+@media only screen and (min-width: 768px) {  
+  body { 
+    background: yellow;
+    font-size: 15px;
+  }
+}
+@media only screen and (min-width: 1200px) {  
+  body { 
+    background: gray;
     font-size: 15px;
   }
 }
