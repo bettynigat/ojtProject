@@ -23,8 +23,8 @@ export default function Day1() {
       {/* Step2 : Input Style */}
       <div className="box">
         <div className="step2">
-          ID : <input type="text"/>
-          PW : <input type="password"/>
+          ID : <input type="text" />
+          PW : <input type="password" />
         </div>
       </div>
 
@@ -32,16 +32,16 @@ export default function Day1() {
       <div className="box">
         <div className="step3">
           On <input type="radio" name="step3" value="on" />
-          Off <input type="radio" name="step3" value="off"/>
+          Off <input type="radio" name="step3" value="off" />
         </div>
       </div>
 
       {/* Step4 : Input checkbox Style */}
       <div className="box">
         <div className="step4">
-          one <input type="checkbox" name="step4" value="one"/>
-          two <input type="checkbox" name="step4" value="one"/>
-          three <input type="checkbox" name="step4" value="one"/>
+          one <input type="checkbox" name="step4" value="one" />
+          two <input type="checkbox" name="step4" value="one" />
+          three <input type="checkbox" name="step4" value="one" />
         </div>
       </div>
 

@@ -5,7 +5,7 @@
 }
 
 .box {
-  background-color: lightgreen;
+  background-color: #66cda9;
   margin: 10px; 
   display: flex;
   align-items: center;
@@ -21,25 +21,28 @@
 }
 
 .box_button {
-  background-color: orange;
+  background-color: #f4a460;
   padding: 15px;
   margin: 10px;
   border-radius: 25px;
   font-weight: bold;
   align-items: center;
 }
+
 @media only screen and (min-width: 320px) {  
   body { 
     background: green;
     font-size: 15px;
   }
 }
+
 @media only screen and (min-width: 768px) {  
   body { 
     background: yellow;
     font-size: 15px;
   }
 }
+
 @media only screen and (min-width: 1200px) {  
   body { 
     background: gray;
