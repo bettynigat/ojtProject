@@ -3,7 +3,7 @@
 // Mission : Write javascript example code for 5 functions.
 export default function Day2() {
 
-  // learning point 1 : let, var, const difference
+  // learning point 1 : let, var, const difference.
   const func1 = () => {
     // Write the sample code below.
     console.log('clicked func1!');
