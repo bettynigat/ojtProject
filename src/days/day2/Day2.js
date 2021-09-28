@@ -163,7 +163,7 @@ export default function Day2() {
     // Write the sample code below.
     console.log('clicked Calc!');
   }
-
+  
   return (
     <div className="contaniner">
       <div className="box">
@@ -179,8 +179,36 @@ export default function Day2() {
         <button onClick={func5_4}>Star4</button>
         <button onClick={func5_5}>Star5</button>
       </div>
-      <div className="box">
-        <button onClick={func6}>Calc</button>
+      <div className="box cal">
+        <button className="cal_header" onClick={func6}>Jungry Calculator</button>
+        <textarea className="output" rows="2" cols="30"></textarea>
+        <div className="calculator-flex">
+          <div className="rows">
+            <button className="number">1</button>
+            <button className="number">2</button>
+            <button className="number">3</button>
+            <button className="operator">+</button>
+          </div>
+          <div className="rows">
+            <button className="number">4</button>
+            <button className="number">5</button>
+            <button className="number">6</button>
+            <button className="operator">-</button>
+          </div>
+          <div className="rows">
+            <button className="number">7</button>
+            <button className="number">8</button>
+            <button className="number">9</button>
+            <button>*</button>
+          </div>
+          <div className="rows">
+            <button>C</button>
+            <button className="number">0</button>
+            <button className="operator">=</button>
+            <button className="operator">/</button>
+            <button className="number dot">.</button>
+          </div>
+        </div>
       </div>
     </div>
   )

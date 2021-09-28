@@ -14,6 +14,34 @@
   flex: 1;
 }
 
+.cal_header{
+  font-size: large;
+  margin:20px; 
+  background: transparent;
+  font-weight: bold;
+}
+.cal{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.calculator-flex{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  gap: 5px;
+
+}
+
+.calculator-flex.rows{
+  display: flex;
+  flex-direction: row;
+}
+
+.rows button{
+  margin-left: 5px;
+}
+
 .button {
   display: flex;
   flex-direction: column;
@@ -29,6 +57,7 @@
   font-weight: bold;
   align-items: center;
 }
+
 
 @media only screen and (min-width: 320px) {  
   body { 
