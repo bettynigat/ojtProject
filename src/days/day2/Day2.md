@@ -10,7 +10,7 @@ Note The image file is day2.png
 
 ## Mission 3 : You write javascript async, await example code.
 
-## Mission 4 : You write javascript promises example code.
+## Mission 4 : You write javascript p exromisesample code.
 
 ## Mission 5 : You draw a star by referring to the following image file using a loop.
 look at the /src/day2/day2_1.png file

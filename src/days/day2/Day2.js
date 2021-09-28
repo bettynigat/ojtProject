@@ -11,16 +11,16 @@ export default function Day2() {
   const func1 = () => {
     // Write the sample code below.
     console.log('clicked func1!');
-    const randomNumer= Math.random(); 
-    let goodDay= "Today is your lucky day! Buy the lottery!"; 
-    let badDay= "Today is not your day! Don't buy the lottery!"; 
-    const maxMoney= 1000000; 
-    var moneyWin= Math.floor(Math.random()*maxMoney); 
-    if (randomNumer>=0.5){
+    const randomNumer = Math.random();
+    let goodDay = "Today is your lucky day! Buy the lottery!";
+    let badDay = "Today is not your day! Don't buy the lottery!";
+    const maxMoney = 1000000;
+    var moneyWin = Math.floor(Math.random() * maxMoney);
+    if (randomNumer >= 0.5) {
       console.log(goodDay + ` You will win $${moneyWin} today!`);
     }
-    else{
-      console.log(badDay); 
+    else {
+      console.log(badDay);
     }
   }
 
@@ -28,35 +28,59 @@ export default function Day2() {
   const func2 = () => {
     // Write the sample code below.
     console.log('clicked func2!');
-    const arrowFunction= (name)=>console.log(`${name}, Welcome to the Javascript tutorial`); 
-    arrowFunction("betty"); 
+    const arrowFunction = (name) => console.log(`${name}, Welcome to the Javascript tutorial`);
+    arrowFunction("betty");
   }
 
   // learning point 3 : async, await
-  const func3 = () => {
+  const func3 = async () => {
     // Write the sample code below.
     console.log('clicked func3!');
-    const prepareFood= async function(foodChoice){
-      console.log(`${foodChoice} preparation is in progress. Please wait until it is cooked`); 
-      setTimeout(()=>{
-        console.log("Your food is ready now!")
-      },4000); 
-    }
-    const orderFood= async function(food){
-      console.log(`${food} is ordered!`);
-      await prepareFood(food); 
-      console.log("Enjoy your delicious food!"); 
+    let isShopOpen = true;
+
+    function prepareFood(foodChoice, isShopOpen) {
+      return new Promise((resolve, reject) => {
+        if (isShopOpen) {
+          setTimeout(() => {
+            resolve(console.log("Your food is ready now!"))
+          }, 4000)
+        }
+        else {
+          reject(console.log("Sorry shop is closed"));
+        }
+      })
     }
 
-    orderFood("Pizza");
+    async function orderFood(food, isShopOpen) {
+      console.log(`${food} is ordered! Wait 4 seconds for its preparation`);
+      await prepareFood(food, isShopOpen);
+      console.log("Enjoy your delicious food!");
+    }
 
+    await orderFood("pizza", isShopOpen).catch(() => console.log("Customer is sad:("));
+    console.log("done");
   }
 
   // learning point 4 : promises
-  const func4 = () => {
+  const func4 = async () => {
     // Write the sample code below.
     console.log('clicked func4!');
-
+    let love = true;
+    let myPromise = new Promise(function (resolve, reject) {
+      setTimeout(() => {
+        if (love === true) {
+          console.log("I love you");
+          resolve(love);
+        }
+        else {
+          console.log("I don't love you")
+          reject(love);
+        }
+      }, 3000);
+      return "done";
+    }).catch((err) => console.log('err occured and love= ', err))
+      .then((value) => console.log('successful and love=', value));
+    myPromise.then(() => console.log("done"));
   }
 
   // start1
