@@ -5,23 +5,50 @@ import './day2.css';
 export default function Day2() {
 
   // learning point 1 : let, var, const difference.
+  //var is function scoped but let is block scoped 
+  //calling let before definition cases error. but calling var before 
+  //defination gives "undefined" and the program continues as normal 
   const func1 = () => {
     // Write the sample code below.
     console.log('clicked func1!');
-
+    const randomNumer= Math.random(); 
+    let goodDay= "Today is your lucky day! Buy the lottery!"; 
+    let badDay= "Today is not your day! Don't buy the lottery!"; 
+    const maxMoney= 1000000; 
+    var moneyWin= Math.floor(Math.random()*maxMoney); 
+    if (randomNumer>=0.5){
+      console.log(goodDay + ` You will win $${moneyWin} today!`);
+    }
+    else{
+      console.log(badDay); 
+    }
   }
 
   // learning point 2 : arrow function
   const func2 = () => {
     // Write the sample code below.
     console.log('clicked func2!');
-
+    const arrowFunction= (name)=>console.log(`${name}, Welcome to the Javascript tutorial`); 
+    arrowFunction("betty"); 
   }
 
   // learning point 3 : async, await
   const func3 = () => {
     // Write the sample code below.
     console.log('clicked func3!');
+    const prepareFood= async function(foodChoice){
+      console.log(`${foodChoice} preparation is in progress. Please wait until it is cooked`); 
+      setTimeout(()=>{
+        console.log("Your food is ready now!")
+      },4000); 
+    }
+    const orderFood= async function(food){
+      console.log(`${food} is ordered!`);
+      await prepareFood(food); 
+      console.log("Enjoy your delicious food!"); 
+    }
+
+    orderFood("Pizza");
 
   }
 
@@ -39,6 +66,7 @@ export default function Day2() {
 
   // start2
   const func5_2 = () => {
+    console.log("*");
     console.log('clicked func5_2!');
   }
 
