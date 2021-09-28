@@ -86,34 +86,82 @@ export default function Day2() {
   // start1
   const func5_1 = () => {
     console.log('clicked func5_1!');
+    for (let i = 0; i < 7; i++) {
+      let star = "";
+      for (let j = 0; j < i + 1; j++) {
+        star += "*";
+      }
+      console.log(star);
+    }
   }
 
   // start2
   const func5_2 = () => {
-    console.log("*");
     console.log('clicked func5_2!');
+    for (let i = 6; i >= 0; i--) {
+      let star = "";
+      for (let j = 0; j < i + 1; j++) {
+        star += "*";
+      }
+      console.log(star);
+    }
   }
 
   // start3
   const func5_3 = () => {
     console.log('clicked func5_3!');
+    for (let i = 6; i >= 0; i--) {
+      let star = "";
+      for (let j = 0; j < 7 - i; j++) {
+        star += "*";
+      }
+      console.log(`${' '.repeat(i)}` + star);
+    }
   }
 
   // start4
   const func5_4 = () => {
     console.log('clicked func5_4!');
+    let starCounter = 1;
+    for (let i = 6; i >= 0; i--) {
+      let star = "";
+      for (let j = 0; j < starCounter; j++) {
+        star += "*";
+      }
+      console.log(`${' '.repeat(i)}` + star + `${' '.repeat(i)}`);
+      starCounter += 2;
+    }
   }
 
   // start5
   const func5_5 = () => {
     console.log('clicked func5_5!');
+    let starCounter = 1;
+    let i;
+    for (let counter = 0; counter < 7; counter++) {
+      let star = "";
+      if (counter === 4) {
+        starCounter -= 4;
+      }
+      for (let j = 0; j < starCounter; j++) {
+        star += "*";
+      }
+      if (counter <= 3) {
+        starCounter += 2;
+        i = 3 - counter;
+      }
+      else {
+        starCounter -= 2;
+        i = counter - 3;
+      }
+      console.log(`${' '.repeat(i)}` + star + `${' '.repeat(i)}`);
+    }
   }
 
   // learning point 6 : Make Calc
   const func6 = () => {
     // Write the sample code below.
     console.log('clicked Calc!');
-
   }
 
   return (
