@@ -162,8 +162,28 @@ export default function Day2() {
   const func6 = () => {
     // Write the sample code below.
     console.log('clicked Calc!');
+    const buttons = document.querySelectorAll('.buttons');
+    const output = document.querySelector('.output');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', calculate);
+    });
+
+    function calculate(event) {
+      const clickedValue = event.target.value;
+      if (clickedValue === '=') {
+        if (output.value !== '') {// calculate and show answer
+          output.value = eval(output.value); //function eval calculates 
+        }
+      }
+      else if (clickedValue === 'C') {// clear
+        output.value = '';
+      }
+      else { // add them to the display 
+        output.value += clickedValue;
+      }
+    }
   }
-  
+
   return (
     <div className="contaniner">
       <div className="box">
@@ -179,34 +199,34 @@ export default function Day2() {
         <button onClick={func5_4}>Star4</button>
         <button onClick={func5_5}>Star5</button>
       </div>
-      <div className="box cal">
+      <div className="box calculator">
         <button className="cal_header" onClick={func6}>Jungry Calculator</button>
-        <textarea className="output" rows="2" cols="30"></textarea>
-        <div className="calculator-flex">
+        <textarea className="output" rows="2" cols="30" disabled></textarea>
+        <div className="keys">
           <div className="rows">
-            <button className="number">1</button>
-            <button className="number">2</button>
-            <button className="number">3</button>
-            <button className="operator">+</button>
+            <button value="1" className="buttons">1</button>
+            <button value="2" className="buttons">2</button>
+            <button value="3" className="buttons">3</button>
+            <button value="+" className="buttons">+</button>
           </div>
           <div className="rows">
-            <button className="number">4</button>
-            <button className="number">5</button>
-            <button className="number">6</button>
-            <button className="operator">-</button>
+            <button value="4" className="buttons">4</button>
+            <button value="5" className="buttons">5</button>
+            <button value="6" className="buttons">6</button>
+            <button value="-" className="buttons">-</button>
           </div>
           <div className="rows">
-            <button className="number">7</button>
-            <button className="number">8</button>
-            <button className="number">9</button>
-            <button>*</button>
+            <button value="7" className="buttons">7</button>
+            <button value="8" className="buttons">8</button>
+            <button value="9" className="buttons">9</button>
+            <button value="*" className="buttons">*</button>
           </div>
           <div className="rows">
-            <button>C</button>
-            <button className="number">0</button>
-            <button className="operator">=</button>
-            <button className="operator">/</button>
-            <button className="number dot">.</button>
+            <button value="C" className="buttons">C</button>
+            <button value="0" className="buttons">0</button>
+            <button value="=" className="buttons">=</button>
+            <button value="/" className="buttons">/</button>
+            <button value="." className="buttons">.</button>
           </div>
         </div>
       </div>

@@ -19,13 +19,17 @@
   margin:20px; 
   background: transparent;
   font-weight: bold;
+  
 }
-.cal{
+.calculator{
   display: flex;
   justify-content: flex-start;
 }
 
-.calculator-flex{
+.output{
+  text-align: left;
+}
+.keys{
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -33,13 +37,18 @@
 
 }
 
-.calculator-flex.rows{
+
+.keys.rows{
   display: flex;
   flex-direction: row;
 }
 
 .rows button{
   margin-left: 5px;
+}
+
+.rows button:hover{
+  cursor: pointer;
 }
 
 .button {
