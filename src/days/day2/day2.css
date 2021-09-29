@@ -19,24 +19,36 @@
   margin:20px; 
   background: transparent;
   font-weight: bold;
-  
 }
+
 .calculator{
   display: flex;
   justify-content: flex-start;
 }
 
 .output{
-  text-align: left;
+  background-color:white; 
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
 }
+
+.output .previous-operand{
+  color: black;
+  font-weight: bold;
+}
+
+.output .current-operand{
+  color: black;
+  font-weight: bold;
+}
+
 .keys{
   display: flex;
   flex-direction: column;
   margin: 10px;
   gap: 5px;
-
 }
-
 
 .keys.rows{
   display: flex;

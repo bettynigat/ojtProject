@@ -159,36 +159,122 @@ export default function Day2() {
   }
 
   // learning point 6 : Make Calc
-  const func6 = () => {
-    // Write the sample code below.
-    console.log('clicked Calc!');
+  window.onload = function () {
+    class Calculator {
+      constructor(previousOperandTextElement, currentOperandTextElement) {
+        this.previousOperandTextElement = previousOperandTextElement;
+        this.currentOperandTextElement = currentOperandTextElement;
+        this.clear();
+      };
 
-    // Write By K
-    // improve 1 : eval to replace with another
-    // improve 2 : execption process
-    // improve 3 : how to ini func
+      clear() {
+        this.currentOperand = '';
+        this.previousOperand = '';
+        this.operation = undefined;
+      }
 
-    const buttons = document.querySelectorAll('.buttons');
-    const output = document.querySelector('.output');
+      appendNumber(number) {
+        if (number === '.' && this.currentOperand.includes('.')) return
+        this.currentOperand = this.currentOperand.toString() + number.toString();
+      }
 
-    buttons.forEach(function (button) {
-      button.addEventListener('click', calculate);
-    });
+      chooseOperation(operation) {
+        if (this.currentOperand === '') return
+        if (this.previousOperand !== '') {
+          this.compute();
+        }
+        this.operation = operation;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '';
+      }
 
-    function calculate(event) {
-      const clickedValue = event.target.value;
-      if (clickedValue === '=') {
-        if (output.value !== '') {// calculate and show answer
-          output.value = eval(output.value); //function eval calculates 
+      compute() {
+        let computation;
+        const prev = parseFloat(this.previousOperand);
+        const current = parseFloat(this.currentOperand);
+        if (isNaN(prev) || isNaN(current)) return
+        switch (this.operation) {
+          case '+':
+            computation = prev + current;
+            break;
+          case '-':
+            computation = prev - current;
+            break;
+          case '*':
+            computation = prev * current;
+            break;
+          case '/':
+            computation = prev / current;
+            break;
+          default:
+            return
+        }
+        this.currentOperand = computation;
+        this.operation = undefined;
+        this.previousOperand = '';
+      }
+
+      getDisplayNumber(number) {
+        const stringNumber = number.toString()
+        const integerDigits = parseFloat(stringNumber.split('.')[0])
+        const decimalDigits = stringNumber.split('.')[1]
+        let integerDisplay
+        if (isNaN(integerDigits)) {
+          integerDisplay = ''
+        } else {
+          integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 })
+        }
+        if (decimalDigits != null) {
+          return `${integerDisplay}.${decimalDigits}`
+        } else {
+          return integerDisplay
         }
       }
-      else if (clickedValue === 'C') {// clear
-        output.value = '';
-      }
-      else { // add them to the display 
-        output.value += clickedValue;
+
+      updateDisplay() {
+        this.currentOperandTextElement.innerText =
+          this.getDisplayNumber(this.currentOperand)
+        if (this.operation != null) {
+          this.previousOperandTextElement.innerText =
+            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+        } else {
+          this.previousOperandTextElement.innerText = ''
+        }
       }
     }
+
+    const numberButton = document.querySelectorAll('.number');
+    const operatorButton = document.querySelectorAll('.operator');
+    const clearButton = document.querySelector('.clear');
+    const equalButton = document.querySelector('.equal');
+    const previousOperandTextElement = document.querySelector('.previous-operand');
+    const currentOperandTextElement = document.querySelector('.current-operand');
+
+    const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+
+    numberButton.forEach(button => {
+      button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
+      })
+    })
+
+    operatorButton.forEach(button => {
+      button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText);
+        calculator.updateDisplay();
+      })
+    })
+
+    equalButton.addEventListener('click', button => {
+      calculator.compute();
+      calculator.updateDisplay();
+    })
+
+    clearButton.addEventListener('click', button => {
+      calculator.clear();
+      calculator.updateDisplay();
+    })
   }
 
   return (
@@ -207,33 +293,36 @@ export default function Day2() {
         <button onClick={func5_5}>Star5</button>
       </div>
       <div className="box calculator">
-        <button className="cal_header" onClick={func6}>Jungry Calculator</button>
-        <textarea className="output" rows="2" cols="30" disabled></textarea>
+        <button className="cal_header">Jungry Calculator</button>
+        <div className="output">
+          <div className="previous-operand"></div>
+          <div className="current-operand"></div>
+        </div>
         <div className="keys">
           <div className="rows">
-            <button value="1" className="buttons">1</button>
-            <button value="2" className="buttons">2</button>
-            <button value="3" className="buttons">3</button>
-            <button value="+" className="buttons">+</button>
+            <button value="1" className="number">1</button>
+            <button value="2" className="number">2</button>
+            <button value="3" className="number">3</button>
+            <button value="+" className="operator">+</button>
           </div>
           <div className="rows">
-            <button value="4" className="buttons">4</button>
-            <button value="5" className="buttons">5</button>
-            <button value="6" className="buttons">6</button>
-            <button value="-" className="buttons">-</button>
+            <button value="4" className="number">4</button>
+            <button value="5" className="number">5</button>
+            <button value="6" className="number">6</button>
+            <button value="-" className="operator">-</button>
           </div>
           <div className="rows">
-            <button value="7" className="buttons">7</button>
-            <button value="8" className="buttons">8</button>
-            <button value="9" className="buttons">9</button>
-            <button value="*" className="buttons">*</button>
+            <button value="7" className="number">7</button>
+            <button value="8" className="number">8</button>
+            <button value="9" className="number">9</button>
+            <button value="*" className="operator">*</button>
           </div>
           <div className="rows">
-            <button value="C" className="buttons">C</button>
-            <button value="0" className="buttons">0</button>
-            <button value="=" className="buttons">=</button>
-            <button value="/" className="buttons">/</button>
-            <button value="." className="buttons">.</button>
+            <button value="C" className="clear">C</button>
+            <button value="0" className="number">0</button>
+            <button value="=" className="equal">=</button>
+            <button value="/" className="operator">/</button>
+            <button value="." className="number">.</button>
           </div>
         </div>
       </div>
