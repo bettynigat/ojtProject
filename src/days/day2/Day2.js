@@ -162,8 +162,15 @@ export default function Day2() {
   const func6 = () => {
     // Write the sample code below.
     console.log('clicked Calc!');
+
+    // Write By K
+    // improve 1 : eval to replace with another
+    // improve 2 : execption process
+    // improve 3 : how to ini func
+
     const buttons = document.querySelectorAll('.buttons');
     const output = document.querySelector('.output');
+
     buttons.forEach(function (button) {
       button.addEventListener('click', calculate);
     });
