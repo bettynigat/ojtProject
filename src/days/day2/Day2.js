@@ -173,8 +173,8 @@ export default function Day2() {
         this.operation = undefined;
       }
 
-      appendNumber(number) {
-        if (number === '.' && this.currentOperand.includes('.')) return
+      appendNumber(number) { 
+        if (number.toString() === '.' && this.currentOperand.toString().includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString();
       }
 
