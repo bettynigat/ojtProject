@@ -13,6 +13,10 @@
   flex: 1;
 }
 
+.cal{
+  display: flex;
+  align-items: flex-start;
+}
 .button{
   display: flex;
   flex-direction: column;

@@ -14,22 +14,41 @@ ol, ul {
 }
 
 .status {
+  margin: 10px;
   margin-bottom: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 700;
+  font-size: medium;
 }
 
+.winner{
+  background-color: tomato;
+  padding: 10px; 
+  margin: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: medium;
+}
+
+.play-again{
+  position: relative;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  background: yellow;
+  border: 2px solid #999;
   float: left;
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 43px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 43px;
 }
 
 .square:focus {
@@ -41,8 +60,10 @@ ol, ul {
 }
 
 .game {
+  
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .game-info {
