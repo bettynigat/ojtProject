@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Day2 from './days/day2/Day2';
+import Day4 from './days/day4/Day4';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Day2 />
+    <Day4 />
   </React.StrictMode>,
   document.getElementById('root')
 );
