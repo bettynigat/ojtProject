@@ -1,7 +1,6 @@
 import React from 'react';
 import './day4_Tutorial.css';
 
-//change to function if there is no state to keep 
 function Square(props) {
   return (
     <button
@@ -42,16 +41,15 @@ class Board extends React.Component {
     return null;
   }
 
-  checkFullBox() {
-    let isFull = true;
-    let items = this.state.squares.slice();
+  checkFullBox(items) {
+    var isFull = true;
+    console.log('test ==== ', items);
     items.forEach((item) => {
       if (item === null) {
         isFull = false;
-        return isFull;
       }
     })
-    console.log(isFull);
+    return isFull;
   }
 
   playAgain() {
@@ -77,7 +75,7 @@ class Board extends React.Component {
     if (isThereWinner) {
       this.setState({ winner: `The winner is ${isThereWinner}` });
     }
-    if (this.checkFullBox() && !isThereWinner) {
+    if (this.checkFullBox(items) && !isThereWinner) {
       this.setState({ winner: 'It is a tie' });
     }
   }
@@ -93,7 +91,7 @@ class Board extends React.Component {
   render() {
     const player = this.state.xIsNext ? 'X' : 'O';
     const status = `Next player: ${player}`;
-    const win = `Result: ${this.state.winner}`
+    let win = `Result: ${this.state.winner}`;
     return (
       <div>
         <div className="display">
