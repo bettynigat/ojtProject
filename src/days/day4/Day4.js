@@ -4,6 +4,7 @@ import './day4_Tutorial.css';
 function Square(props) {
   return (
     <button
+      id="button"
       className="square"
       onClick={() => props.squareClick()}>
       {props.value}

@@ -1,0 +1,49 @@
+.common{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.image {
+    background: url('https://adniasolutions.com/wp-content/uploads/2018/05/To-Do-List-Excel-Template-01.png');
+    margin: 10px; 
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+  }
+
+  .header{
+      text-align: center;
+      flex: 1;
+  }
+
+  .input{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+  }
+  #ID{
+      margin-left: 70px;
+      margin-bottom: 10px; ;
+  }
+
+  #PW{
+      margin-left: 20px;
+  }
+  
+  .login{
+    margin: 10px; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+  }
+
+  .login button{
+      font-size: 50px;
+  }

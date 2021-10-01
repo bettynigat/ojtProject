@@ -23,8 +23,10 @@ export default function Day1() {
       {/* Step2 : Input Style */}
       <div className="box">
         <div className="step2">
-          ID : <input type="text" />
-          PW : <input type="password" />
+          <label for="id">ID</label>
+          <input type="text" id="id"/><br></br>
+          <label for="pw">Password</label>
+          <input type="password" id="pw"/>
         </div>
       </div>
 
