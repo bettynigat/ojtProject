@@ -1,49 +1,84 @@
-.common{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+.common {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: url("https://c.stocksy.com/a/FX5400/z9/974593.jpg");
+  background-size: cover;
 }
 
 .image {
-    background: url('https://adniasolutions.com/wp-content/uploads/2018/05/To-Do-List-Excel-Template-01.png');
-    margin: 10px; 
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex: 1;
-  }
+  background: url("https://adniasolutions.com/wp-content/uploads/2018/05/To-Do-List-Excel-Template-01.png");
+  margin: 10px 0px 10px 10px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1.5;
+}
 
-  .header{
-      text-align: center;
-      flex: 1;
-  }
+.header {
+  text-align: center;
+  align-content: flex-start;
+  height: 15vh;
+  /* margin-bottom: 20px; */
+  /* border: 1px white solid; */
+}
 
-  .input{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex: 1;
-  }
-  #ID{
-      margin-left: 70px;
-      margin-bottom: 10px; ;
-  }
+.header h1 {
+  align-content: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 0px;
+  color: black;
+  /* font-family: fantasy; */
+  font-family: Cursive;
+  /* border: 1px solid red; */
+  /* padding: 5px;
+  background-color: rgb(255, 105, 180, 0.5);
+  border-radius: 10px; */
+}
 
-  #PW{
-      margin-left: 20px;
-  }
-  
-  .login{
-    margin: 10px; 
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex: 1;
-  }
+.input {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 2;
+  height: 20vh;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
-  .login button{
-      font-size: 50px;
-  }
+.user-input {
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+  background-color: rgb(163, 163, 10, 0.5);
+  border-radius: 10px;
+}
+#ID {
+  margin-left: 70px;
+  margin-bottom: 10px;
+  /* border: 1px rgb(224, 16, 16) solid; */
+  background-color: powderblue;
+}
+
+#PW {
+  margin-left: 20px;
+  background-color: powderblue;
+}
+
+.login {
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+  flex: 0.75;
+  margin: 10px;
+}
+
+.login button {
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-family: cursive;
+}

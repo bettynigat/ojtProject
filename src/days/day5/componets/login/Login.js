@@ -4,12 +4,15 @@ import {
     BrowserRouter as Router,
     Route,
     Link,
-    Switch
+    Switch,
+    useHistory,
 } from 'react-router-dom';
 
+import Todolist from '../todolist/Todolist';
+import { Component } from 'react';
 function Login() {
+    let history= useHistory(); 
     return (
-        <Router>
             <div className="common">
                 <div className="image">
                 </div>
@@ -17,16 +20,18 @@ function Login() {
                     <h1>Your Todo</h1>
                 </div>
                 <div className="input">
+                    <div className="user-input">
                     <label for="ID">ID</label>
                     <input type="text" id="ID" /><br></br>
                     <label for="PW">Password</label>
                     <input type="password" id="PW"/>
+                    </div>
+                    <div className="login"> 
+                    <button onClick={()=>history.push("/todolist")}>Login</button>
                 </div>
-                <div className="login"> 
-                    <button>Log in </button>
                 </div> 
             </div>
-        </Router>
+        
     )
 }
 export default Login;

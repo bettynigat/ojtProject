@@ -1,20 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom';
-
-import Login from './days/day5/componets/login/Login'
+import Login from './days/day5/componets/login/Login';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login/>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

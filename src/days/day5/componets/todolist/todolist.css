@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbqwjBP3MVApahCtAy-rkDUyQLAsUkFCasQw&usqp=CAU");
+  background-size: contain;
+  background-position: center;
+}
+
+.navigation {
+  margin-left: 30px;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 20vh;
+  font-size: large;
+  align-items: center;
+  text-align: center;
+}
+
+.navigation button {
+  flex: 1;
+  padding: 15px;
+  border-radius: 25px;
+  margin-left: 10px;
+}
+
+.todo :hover {
+  cursor: pointer;
+  background-color: tomato;
+}
+.todo {
+  background-color: aquamarine;
+}
+.news {
+  background-color: burlywood;
+}
+.main-page {
+  width: 60%;
+  height: 80vh;
+  margin: auto;
+  background-color: rgb(198, 236, 248);
+  border-radius: 25px;
+  margin-bottom: 20px;
+}
+
+.display-list {
+  margin-top: 30px;
+}
+
+.add-task {
+  margin: 20px 30px;
+  padding: 10px;
+  background-color: rgb(179, 174, 174, 0.7);
+}
+
+.article {
+  padding: 10px;
+  margin: 10px 30px;
+  background-color: aquamarine;
+  text-align: center;
+}
+
+.article input[type="checkbox"] {
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.strike-button {
+  float: left;
+}
+
+.delete-button {
+  float: right;
+}
+
+.add-task input[type="text"] {
+  font-size: 15px;
+  height: auto;
+  margin-bottom: 05px;
+  width: 80%;
+}
+.add-task button {
+  float: right;
+}

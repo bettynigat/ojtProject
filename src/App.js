@@ -1,31 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Switch
 } from 'react-router-dom';
+
+import Todolist from './days/day5/componets/todolist/Todolist';
+import Login from './days/day5/componets/login/Login';
+import { Component } from 'react';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Login}/>
+        <Route exact path="/todolist" component={Todolist}/>
+      </Switch>
+    </Router>
+  )
 }
 
 export default App;
