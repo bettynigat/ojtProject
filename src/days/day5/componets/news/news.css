@@ -1,0 +1,89 @@
+.container1 {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: lightskyblue;
+  }
+
+  .add-news{
+      position: relative;
+      width: 20%;
+      margin: auto;
+      margin-top: 20px;
+  }
+
+  .add-news button{
+      font-size: large;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: bold;
+      padding: 5px;
+  }
+    
+  .main-page {
+    width: 60%;
+    height: 80vh;
+    margin: auto;
+    background-color: rgb(198, 236, 248);
+    border-radius: 25px;
+    margin-bottom: 20px;
+  }
+  
+  .news-section {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px 30px;
+    background-color: rgb(131, 214, 241);
+    text-align: center;
+    border-radius: 15px;
+    color: blue; 
+  }
+
+  .header{
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid black; 
+      align-content: center;
+      justify-content: center;
+      background-color: rgb(250, 232, 209);
+  }
+
+  .title{
+    /* justify-content: flex-start; */
+    font-size: larger;
+    font-family: cursive;
+    align-items: center;
+    color: rgb(174, 0, 255);
+    font-weight: bold;
+    margin: 5px;
+  }
+
+  .modifier{
+      align-content: center;
+      justify-items: flex-end;
+      font-size: medium;
+  }
+.modifier button{
+    font-size: 15px;
+}
+  .delete{
+      background-color: rgb(219, 106, 65);
+      padding:5px;
+  }
+
+  .edit{
+      background-color: rgb(203, 247, 138);
+      padding:5px;
+  }
+  
+  .articles{
+      flex:2;
+      border: solid 1px black;
+  }
+
+  .articles p{
+      margin: 15px;
+      font-size: large;
+      color: black;
+  }

@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import React, { useState } from 'react';
 import News from '../news/News';
-
+import { Component } from 'react';
 
 function Navigation() {
     return (
@@ -19,10 +19,10 @@ function Navigation() {
             </header>
             <Switch>
                 <Route path="/">
-                    <Todolist/>
+                    <Todolist />
                 </Route>
                 <Route path="/news">
-                    <News/>
+                    <News />
                 </Route>
             </Switch>
         </Router>
@@ -75,7 +75,7 @@ function DisplayToDoList(props) {
     );
 }
 
-function Todolist() {
+function TodolistItem() {
     const data = [{
         id: 1,
         article: "This is an example list",
@@ -91,10 +91,10 @@ function Todolist() {
         setToDoList(mapped);
     };
 
-    const deleteItem =(id)=>{
-        let removed= listArray.splice(id, 1);
+    const deleteItem = (id) => {
+        let removed = listArray.splice(id, 1);
         setToDoList(removed);
-      }
+    }
 
     const addTask = (userInput) => {
         let copy = [...listArray];
@@ -105,9 +105,6 @@ function Todolist() {
     return (
         <Router>
             <div className="container">
-                <div className="navigation">
-                    <Navigation />
-                </div>
                 <div className="main-page">
                     <div className="todolist-header">
                         <ToDoListHeader addTask={addTask} />
@@ -121,5 +118,28 @@ function Todolist() {
     )
 }
 
+function Newss() {
+    return (
+        <div>
+            <h1>This is News page</h1>
+        </div>
+    )
+}
 
+function Todolist() {
+    return (
+        <Router>
+            <div className="navigation">
+                <header>
+                    <Link to="/todolist"><button className="todo"> Todo list</button></Link>
+                    <Link to="/news"><button className="news">News</button></Link>
+                </header>
+            </div>
+            <Switch>
+                <Route path="/todolist" component={TodolistItem} />
+                <Route path="/news" component={News} />
+            </Switch>
+        </Router>
+    );
+}
 export default Todolist;
