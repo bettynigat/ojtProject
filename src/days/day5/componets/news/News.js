@@ -54,13 +54,40 @@ function NewsHeader(props) {
           <button onClick={() => { closeModal() }}>Close</button>
           <button onClick={handleSubmit}>Save Changes</button>
         </div>
-
       </Modal>
     </div>
   )
 }
 
 function NewsItem(props) {
+  const [show, setShow] = useState(false);
+
+  const showModal = () => {
+    setShow(true)
+  };
+
+  const closeModal = () => {
+    setShow(false)
+  };
+
+  const [titleInput, setTitleInput] = useState('');
+  const [articleInput, setArticleInput] = useState('');
+
+  const handleTitleChange = (e) => {
+    setTitleInput(e.currentTarget.value)
+  }
+
+  const handleArticleChange = (e) => {
+    setArticleInput(e.currentTarget.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.modifyTask(titleInput, articleInput,props.todo.id);
+    setTitleInput("");
+    setArticleInput("");
+  }
+
   return (
     <div className="news-section">
       <div className="header">
@@ -68,13 +95,24 @@ function NewsItem(props) {
           {props.todo.title}
         </div>
         <div className="modifier">
-          <span><button className="edit">Modify</button></span>
-          <span ><button className="delete">delete</button></span>
+          <span><button onClick={() => { showModal() }} className="edit">Modify</button></span>
+          <span ><button onClick={() => { props.deleteItem(props.todo.id) }} className="delete">delete</button></span>
         </div>
       </div>
       <div className="articles">
         <p>{props.todo.article}</p>
       </div>
+      <Modal isOpen={show} className="Modal">
+        <h1>Add News</h1>
+        <div className="modal-inputs">
+          Title: <input type="text" value={titleInput} onChange={handleTitleChange} placeholder="Add an title..." />
+          Article: <input type="text" value={articleInput} onChange={handleArticleChange} placeholder="Add an article..." />
+        </div>
+        <div className="close">
+          <button onClick={() => { closeModal() }}>Close</button>
+          <button onClick={handleSubmit}>Save Changes</button>
+        </div>
+      </Modal>
     </div>
   )
 }
@@ -84,7 +122,7 @@ function DisplayNews(props) {
     <div>
       {props.listArrays.map(todo => {
         return (
-          <NewsItem todo={todo} />
+          <NewsItem todo={todo} modifyTask={props.modifyTask} deleteItem={props.deleteItem}/>
         )
       })}
     </div>
@@ -110,6 +148,18 @@ function News() {
     setToDoList(copy);
   }
 
+  const modifyTask = (titleInput, articleInput, id) => {
+    let mapped = listArrays.map(news => {
+      return news.id === id ? { ...news, article: articleInput, title: titleInput } : { ...news };
+        });
+    setToDoList(mapped);
+    }
+
+    const deleteItem = (id) => {
+      let removed = listArrays.splice(id, 1);
+      setToDoList(removed);
+  }
+
   return (
     <div className="containers">
       <div className="main-pages">
@@ -117,7 +167,7 @@ function News() {
           <NewsHeader addTask={addTask} />
         </div>
         <div className="display-lists">
-          <DisplayNews listArrays={listArrays} />
+          <DisplayNews listArrays={listArrays} modifyTask={modifyTask} deleteItem={deleteItem}/>
         </div>
       </div>
     </div>
