@@ -21,21 +21,35 @@
 
 .navigation button {
   flex: 1;
+  justify-content: stretch;
   padding: 15px;
   border-radius: 25px;
-  margin-left: 10px;
+  margin-left: 20px;
+  font-size: large;
 }
 
-.todo :hover {
-  cursor: pointer;
-  background-color: tomato;
-}
 .todo {
   background-color: aquamarine;
 }
+
+.todo:hover{
+  cursor: pointer;
+  background-color: tomato;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.news:hover{
+  cursor: pointer;
+  background-color: tomato;
+  padding: 20px;
+  border-radius: 15px;
+}
+
 .news {
   background-color: burlywood;
 }
+
 .main-page {
   width: 60%;
   height: 80vh;
@@ -88,6 +102,7 @@
   margin-bottom: 05px;
   width: 80%;
 }
+
 .add-task button {
   float: right;
 }

@@ -7,20 +7,29 @@ import {
     Switch
 } from 'react-router-dom';
 import React, { useState } from 'react';
+import News from '../news/News';
 
-//individual todo list components 
 
 function Navigation() {
     return (
-        <header>
-            <button className="todo">Todo List</button>
-            <button className="news">News</button>
-        </header>
+        <Router>
+            <header>
+                <button className="todo"> <Link to="/">Todo list</Link></button>
+                <button className="news"><Link to="/news">News</Link></button>
+            </header>
+            <Switch>
+                <Route path="/">
+                    <Todolist/>
+                </Route>
+                <Route path="/news">
+                    <News/>
+                </Route>
+            </Switch>
+        </Router>
     );
 }
 
 function ToDoListHeader(props) {
-
     const [userInput, setUserInput] = useState('');
     const handleChange = (e) => {
         setUserInput(e.currentTarget.value)
@@ -111,5 +120,6 @@ function Todolist() {
         </Router>
     )
 }
+
 
 export default Todolist;
