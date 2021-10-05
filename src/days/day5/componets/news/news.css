@@ -10,7 +10,11 @@
     margin: 100px;
     padding: 100px;
   }
-  
+
+  .close{
+    margin:20px;
+  }
+
   .add-news{
       position: relative;
       width: 20%;
