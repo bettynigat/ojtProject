@@ -8,26 +8,6 @@ import {
 } from 'react-router-dom';
 import React, { useState } from 'react';
 import News from '../news/News';
-import { Component } from 'react';
-
-function Navigation() {
-    return (
-        <Router>
-            <header>
-                <button className="todo"> <Link to="/">Todo list</Link></button>
-                <button className="news"><Link to="/news">News</Link></button>
-            </header>
-            <Switch>
-                <Route path="/">
-                    <Todolist />
-                </Route>
-                <Route path="/news">
-                    <News />
-                </Route>
-            </Switch>
-        </Router>
-    );
-}
 
 function ToDoListHeader(props) {
     const [userInput, setUserInput] = useState('');
@@ -49,7 +29,6 @@ function ToDoListHeader(props) {
     )
 }
 
-//individual rows 
 function Todo(props) {
     return (
         <div className="article">
@@ -60,15 +39,12 @@ function Todo(props) {
     )
 }
 
-//a set of rows of todos 
 function DisplayToDoList(props) {
-
-
     return (
         <div>
-            {props.listArray.map(todo => {
+            {props.listArray.map((todo,index) => {
                 return (
-                    <Todo todo={todo} toggle={props.toggle} deleteItem={props.deleteItem} />
+                    <Todo key={index} todo={todo} toggle={props.toggle} deleteItem={props.deleteItem} />
                 )
             })}
         </div>
@@ -80,8 +56,10 @@ function TodolistItem() {
         id: 1,
         article: "This is an example list",
         completed: false,
+        delete: false,
     }
     ];
+
     const [listArray, setToDoList] = useState(data);
 
     const handleToggle = (id) => {
@@ -92,13 +70,19 @@ function TodolistItem() {
     };
 
     const deleteItem = (id) => {
-        let removed = listArray.splice(id, 1);
-        setToDoList(removed);
+        let mapped = listArray.map(task => {
+            return task.id === id ? { ...task, delete: true } : { ...task };
+        });
+
+        let filtered = mapped.filter(task => {
+            return !task.delete;
+        });
+        setToDoList(filtered);
     }
 
     const addTask = (userInput) => {
         let copy = [...listArray];
-        copy = [...copy, { id: listArray.length + 1, article: userInput, completed: false }];
+        copy = [...copy, { id: listArray.length + 1, article: userInput, completed: false, delete: false }];
         setToDoList(copy);
     }
 
@@ -115,14 +99,6 @@ function TodolistItem() {
                 </div>
             </div>
         </Router>
-    )
-}
-
-function Newss() {
-    return (
-        <div>
-            <h1>This is News page</h1>
-        </div>
     )
 }
 

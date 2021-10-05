@@ -74,9 +74,11 @@
       justify-items: flex-end;
       font-size: medium;
   }
+
  .modifier button{
     font-size: 15px;
-}
+  }
+  
   .delete{
       background-color: rgb(219, 106, 65);
       padding:5px;

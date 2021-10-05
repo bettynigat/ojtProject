@@ -1,14 +1,7 @@
 
 import './news.css'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  useHistory,
-} from 'react-router-dom';
+
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 function NewsHeader(props) {
@@ -39,6 +32,7 @@ function NewsHeader(props) {
     props.addTask(titleInput, articleInput);
     setTitleInput("");
     setArticleInput("");
+    closeModal();
   }
 
   return (
@@ -61,17 +55,16 @@ function NewsHeader(props) {
 
 function NewsItem(props) {
   const [show, setShow] = useState(false);
+  const [titleInput, setTitleInput] = useState(props.todo.title);
+  const [articleInput, setArticleInput] = useState(props.todo.article);
 
-  const showModal = () => {
-    setShow(true)
+  const showModal = (item) => {
+    setShow(true);
   };
 
   const closeModal = () => {
     setShow(false)
   };
-
-  const [titleInput, setTitleInput] = useState('');
-  const [articleInput, setArticleInput] = useState('');
 
   const handleTitleChange = (e) => {
     setTitleInput(e.currentTarget.value)
@@ -86,6 +79,7 @@ function NewsItem(props) {
     props.modifyTask(titleInput, articleInput,props.todo.id);
     setTitleInput("");
     setArticleInput("");
+    closeModal();
   }
 
   return (
@@ -103,10 +97,10 @@ function NewsItem(props) {
         <p>{props.todo.article}</p>
       </div>
       <Modal isOpen={show} className="Modal">
-        <h1>Add News</h1>
+        <h1>Edit the News</h1>
         <div className="modal-inputs">
-          Title: <input type="text" value={titleInput} onChange={handleTitleChange} placeholder="Add an title..." />
-          Article: <input type="text" value={articleInput} onChange={handleArticleChange} placeholder="Add an article..." />
+          Title: <input type="text" id="user-title" value={titleInput} onChange={handleTitleChange} />
+          Article: <input type="text" value={articleInput} onChange={handleArticleChange}  />
         </div>
         <div className="close">
           <button onClick={() => { closeModal() }}>Close</button>
@@ -120,9 +114,9 @@ function NewsItem(props) {
 function DisplayNews(props) {
   return (
     <div>
-      {props.listArrays.map(todo => {
+      {props.listArrays.map((todo, index) => {
         return (
-          <NewsItem todo={todo} modifyTask={props.modifyTask} deleteItem={props.deleteItem}/>
+          <NewsItem key={index} todo={todo} modifyTask={props.modifyTask} deleteItem={props.deleteItem}/>
         )
       })}
     </div>
@@ -132,19 +126,21 @@ function DisplayNews(props) {
 function News() {
   const data = [{
     id: 1,
-    article: "Recently there has been a war in the so-called twin countries. Recently there has been a war in the so-called twin countries. Recently there has been a war in the so-called twin countries. Recently there has been a war in the so-called twin countries. ",
-    title: "War in Twin countries",
+    article: "Although Lu says that the reliability of both the software and the hardware still needs to be increased, TuSimple is planning its first fully autonomous tests, without a human safety driver in the cabin at all, before the end of the year. The results of such tests will indicate whether the company can meet its goal to launch its own trucks by 2024. Lu says that 7,000 have been reserved in the US alone.",
+    title: "Self-driving truck makes delivery 10 hours faster than a human",
+    delete: false, 
   }, {
     id: 2,
-    article: "Recently there has been a war in the so-called twin countries. Recently there has been a war in the so-called twin countries. Recently there has been a war in the so-called twin countries. Recently there has been a war in the so-called twin countries. ",
-    title: "Peace in Twin countries",
+    article: "To get a booster or not? The US Food and Drug Administration and US Centers for Disease Control and Prevention have issued guidance that some adults can receive a third shot of the Pfizer/BioNTech Covid-19 vaccine, so it's time to ask that question.There are so many questions: Who exactly is eligible to get the booster? If you are eligible, should you rush to get inoculated? What should you consider in your decision-making process? And what about those who got the Moderna or Johnson & Johnson vaccines -- can they get a booster too?",
+    title: "Should you get a Covid-19 booster now? An expert weighs in",
+    delete: false,
   }
   ];
   const [listArrays, setToDoList] = useState(data);
 
   const addTask = (titleInput, articleInput) => {
     let copy = [...listArrays];
-    copy = [...copy, { id: listArrays.length + 1, article: articleInput, title: titleInput }];
+    copy = [...copy, { id: listArrays.length + 1, article: articleInput, title: titleInput, delete: false, }];
     setToDoList(copy);
   }
 
@@ -156,8 +152,14 @@ function News() {
     }
 
     const deleteItem = (id) => {
-      let removed = listArrays.splice(id, 1);
-      setToDoList(removed);
+      let mapped = listArrays.map(task => {
+        return task.id === id ? { ...task, delete: true } : { ...task };
+    });
+    
+    let filtered= mapped.filter(task=>{
+        return !task.delete; 
+    });
+    setToDoList(filtered);
   }
 
   return (

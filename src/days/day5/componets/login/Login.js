@@ -1,38 +1,32 @@
-
 import './login.css';
 import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-    Switch,
     useHistory,
 } from 'react-router-dom';
-import React, { useState } from 'react';
-import { Component } from 'react';
-import Todolist from '../todolist/Todolist';
+import React from 'react';
 
 function Login() {
     let history= useHistory(); 
+    
     return (
             <div className="common">
                 <div className="image">
                 </div>
-                <div className="header">
+                <div className="header1">
                     <h1>Your Todo</h1>
                 </div>
                 <div className="input">
                     <div className="user-input">
-                    <label for="ID">ID</label>
-                    <input type="text" id="ID" /><br></br>
-                    <label for="PW">Password</label>
-                    <input type="password" id="PW"/>
+                    <label htmlFor="id">ID</label>
+                    <input type="text" id="id" /><br></br>
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password"/>
                     </div>
                     <div className="login"> 
                     <button onClick={()=>history.push("/todolist")}>Login</button>
                 </div>
                 </div> 
             </div>
-        
     )
 }
+
 export default Login;
