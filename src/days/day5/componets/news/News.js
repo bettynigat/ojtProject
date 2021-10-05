@@ -76,7 +76,7 @@ function NewsItem(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.modifyTask(titleInput, articleInput,props.todo.id);
+    props.modifyTask(titleInput, articleInput, props.todo.id);
     setTitleInput("");
     setArticleInput("");
     closeModal();
@@ -100,7 +100,7 @@ function NewsItem(props) {
         <h1>Edit the News</h1>
         <div className="modal-inputs">
           Title: <input type="text" id="user-title" value={titleInput} onChange={handleTitleChange} />
-          Article: <input type="text" value={articleInput} onChange={handleArticleChange}  />
+          Article: <input type="text" value={articleInput} onChange={handleArticleChange} />
         </div>
         <div className="close">
           <button onClick={() => { closeModal() }}>Close</button>
@@ -116,7 +116,7 @@ function DisplayNews(props) {
     <div>
       {props.listArrays.map((todo, index) => {
         return (
-          <NewsItem key={index} todo={todo} modifyTask={props.modifyTask} deleteItem={props.deleteItem}/>
+          <NewsItem key={index} todo={todo} modifyTask={props.modifyTask} deleteItem={props.deleteItem} />
         )
       })}
     </div>
@@ -128,7 +128,7 @@ function News() {
     id: 1,
     article: "Although Lu says that the reliability of both the software and the hardware still needs to be increased, TuSimple is planning its first fully autonomous tests, without a human safety driver in the cabin at all, before the end of the year. The results of such tests will indicate whether the company can meet its goal to launch its own trucks by 2024. Lu says that 7,000 have been reserved in the US alone.",
     title: "Self-driving truck makes delivery 10 hours faster than a human",
-    delete: false, 
+    delete: false,
   }, {
     id: 2,
     article: "To get a booster or not? The US Food and Drug Administration and US Centers for Disease Control and Prevention have issued guidance that some adults can receive a third shot of the Pfizer/BioNTech Covid-19 vaccine, so it's time to ask that question.There are so many questions: Who exactly is eligible to get the booster? If you are eligible, should you rush to get inoculated? What should you consider in your decision-making process? And what about those who got the Moderna or Johnson & Johnson vaccines -- can they get a booster too?",
@@ -147,17 +147,17 @@ function News() {
   const modifyTask = (titleInput, articleInput, id) => {
     let mapped = listArrays.map(news => {
       return news.id === id ? { ...news, article: articleInput, title: titleInput } : { ...news };
-        });
-    setToDoList(mapped);
-    }
-
-    const deleteItem = (id) => {
-      let mapped = listArrays.map(task => {
-        return task.id === id ? { ...task, delete: true } : { ...task };
     });
-    
-    let filtered= mapped.filter(task=>{
-        return !task.delete; 
+    setToDoList(mapped);
+  }
+
+  const deleteItem = (id) => {
+    let mapped = listArrays.map(task => {
+      return task.id === id ? { ...task, delete: true } : { ...task };
+    });
+
+    let filtered = mapped.filter(task => {
+      return !task.delete;
     });
     setToDoList(filtered);
   }
@@ -169,7 +169,7 @@ function News() {
           <NewsHeader addTask={addTask} />
         </div>
         <div className="display-lists">
-          <DisplayNews listArrays={listArrays} modifyTask={modifyTask} deleteItem={deleteItem}/>
+          <DisplayNews listArrays={listArrays} modifyTask={modifyTask} deleteItem={deleteItem} />
         </div>
       </div>
     </div>
