@@ -1,13 +1,6 @@
 
 import './todolist.css';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-    Switch
-} from 'react-router-dom';
 import React, { useState } from 'react';
-import News from '../news/News';
 
 function ToDoListHeader(props) {
     const [userInput, setUserInput] = useState('');
@@ -42,7 +35,7 @@ function Todo(props) {
 function DisplayToDoList(props) {
     return (
         <div>
-            {props.listArray.map((todo,index) => {
+            {props.listArray.map((todo, index) => {
                 return (
                     <Todo key={index} todo={todo} toggle={props.toggle} deleteItem={props.deleteItem} />
                 )
@@ -51,7 +44,7 @@ function DisplayToDoList(props) {
     );
 }
 
-function TodolistItem() {
+function Todolist() {
     const data = [{
         id: 1,
         article: "This is an example list",
@@ -87,35 +80,17 @@ function TodolistItem() {
     }
 
     return (
-        <Router>
-            <div className="container">
-                <div className="main-page">
-                    <div className="todolist-header">
-                        <ToDoListHeader addTask={addTask} />
-                    </div>
-                    <div className="display-list">
-                        <DisplayToDoList listArray={listArray} toggle={handleToggle} deleteItem={deleteItem} />
-                    </div>
+        <div className="container">
+            <div className="main-page">
+                <div className="todolist-header">
+                    <ToDoListHeader addTask={addTask} />
+                </div>
+                <div className="display-list">
+                    <DisplayToDoList listArray={listArray} toggle={handleToggle} deleteItem={deleteItem} />
                 </div>
             </div>
-        </Router>
+        </div>
     )
 }
 
-function Todolist() {
-    return (
-        <Router>
-            <div className="navigation">
-                <header>
-                    <Link to="/todolist"><button className="todo"> Todo list</button></Link>
-                    <Link to="/news"><button className="news">News</button></Link>
-                </header>
-            </div>
-            <Switch>
-                <Route path="/todolist" component={TodolistItem} />
-                <Route path="/news" component={News} />
-            </Switch>
-        </Router>
-    );
-}
 export default Todolist;
